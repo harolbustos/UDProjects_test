@@ -28,9 +28,6 @@ redirect_uri = (
     if IS_PROD
     else "http://localhost:8000"
 )
-
-print(IS_PROD)
-
 oauth = OAuth()
 oauth.register(
     name='google',
@@ -123,7 +120,7 @@ async def auth(request: Request, db: Session = Depends(get_db)):
         key="access_token",
         value=token,
         httponly=True,
-        secure=IS_PROD,  # True en producción
+        secure=True,  # True en producción
         samesite="None",
         max_age=60 * 60 * 24,
     )
