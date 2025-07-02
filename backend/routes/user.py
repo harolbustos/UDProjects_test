@@ -124,7 +124,7 @@ async def auth(request: Request, db: Session = Depends(get_db)):
         value=token,
         httponly=True,
         secure=IS_PROD,  # True en producción
-        samesite="lax",
+        samesite="None",
         max_age=60 * 60 * 24,
     )
     return response
