@@ -17,9 +17,9 @@ IS_PROD = os.getenv("RAILWAY_ENVIRONMENT") == "production"
 
 FRONTEND_URL = (
     # "http://localhost:5173"
-    os.getenv("FRONTEND_URL_VERCEL")
-    if IS_PROD
-    else "http://localhost:5173"
+    # os.getenv("FRONTEND_URL_VERCEL")
+    # if IS_PROD
+    # else "http://localhost:5173"
 )
 
 redirect_uri = (
