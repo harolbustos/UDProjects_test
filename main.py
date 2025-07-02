@@ -19,7 +19,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # ruta del frontend
+    allow_origins=["https://ud-pfrontend.vercel.app"],  # ruta del frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

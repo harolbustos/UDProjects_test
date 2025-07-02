@@ -16,10 +16,10 @@ router = APIRouter()
 IS_PROD = os.getenv("RAILWAY_ENVIRONMENT") == "production"
 
 FRONTEND_URL = (
-    "http://localhost:5173"
-    # os.getenv("FRONTEND_URL_VERCEL")
-    # if IS_PROD
-    # else "http://localhost:5173"
+    # "http://localhost:5173"
+    os.getenv("FRONTEND_URL_VERCEL")
+    if IS_PROD
+    else "http://localhost:5173"
 )
 
 redirect_uri = (
@@ -121,7 +121,7 @@ async def auth(request: Request, db: Session = Depends(get_db)):
         value=token,
         httponly=True,
         secure=True,  # True en producción
-        samesite="None",
+        samesite=None,
         max_age=60 * 60 * 24,
     )
     return response
