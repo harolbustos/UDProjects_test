@@ -124,9 +124,8 @@ async def auth(request: Request, db: Session = Depends(get_db)):
         value=token,
         httponly=True,
         secure=IS_PROD,  # True en producción
-        samesite="none",
+        samesite="lax",
         max_age=60 * 60 * 24,
-        path="/"  # <--- AGREGA ESTO
     )
     return response
 
@@ -150,7 +149,7 @@ async def obtener_usuario_actual(request: Request, db: Session = Depends(get_db)
         "nombre": usuario.nombre,
         "apellido": usuario.apellido,
         "sub": usuario.correo,
-        "rol": usuario.rol.value
+        "correo": usuario.rol.value
     }
 
 @router.get('/logout')
